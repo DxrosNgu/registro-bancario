@@ -10,6 +10,7 @@ import com.ec.pichincha.registro.bancario.service.CuentaService;
 import com.ec.pichincha.registro.bancario.service.MovimientoService;
 import com.ec.pichincha.registro.bancario.util.client.ClienteClient;
 import com.ec.pichincha.registro.bancario.util.constant.ConstantsUtil;
+import com.ec.pichincha.registro.bancario.util.constant.TransaccionUtil;
 import com.ec.pichincha.registro.bancario.util.exception.CuentaException;
 import com.ec.pichincha.registro.bancario.util.exception.TransaccionException;
 import com.ec.pichincha.registro.bancario.util.exception.UsuarioException;
@@ -174,8 +175,8 @@ class TransaccionServiceImplTest {
         String finFecha = "2024-10-01";
         int pagina = 0;
 
-        LocalDateTime initFechaHora = LocalDate.parse(initFecha, ConstantsUtil.DATE_TIME_FORMATTER).atStartOfDay();
-        LocalDateTime finFechaHora = LocalDate.parse(finFecha, ConstantsUtil.DATE_TIME_FORMATTER).atTime(23, 59, 59);
+        LocalDateTime initFechaHora = TransaccionUtil.getFechaInicial(initFecha);
+        LocalDateTime finFechaHora = TransaccionUtil.getFechaFin(initFecha);
 
         when(clienteClient.getClienteById(clienteId)).thenReturn(clienteResponse);
         when(movimientoService.obtenerMovimientosByCliente(clienteId, true, initFechaHora, finFechaHora, pagina))
@@ -205,8 +206,8 @@ class TransaccionServiceImplTest {
         String finFecha = "2024-10-01";
         int pagina = 0;
 
-        LocalDateTime initFechaHora = LocalDate.parse(initFecha, ConstantsUtil.DATE_TIME_FORMATTER).atStartOfDay();
-        LocalDateTime finFechaHora = LocalDate.parse(finFecha, ConstantsUtil.DATE_TIME_FORMATTER).atTime(23, 59, 59);
+        LocalDateTime initFechaHora = TransaccionUtil.getFechaInicial(initFecha);
+        LocalDateTime finFechaHora = TransaccionUtil.getFechaFin(initFecha);
 
         when(clienteClient.getClienteById(clienteId)).thenReturn(clienteResponse);
         when(movimientoService.obtenerMovimientosByCliente(clienteId, true, initFechaHora, finFechaHora, pagina))
