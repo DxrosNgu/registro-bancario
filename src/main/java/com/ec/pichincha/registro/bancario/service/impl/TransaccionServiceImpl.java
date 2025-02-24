@@ -68,7 +68,7 @@ public class TransaccionServiceImpl implements TransaccionService {
     @Override
     public EstadoCuentaResponse obtenerEstadoCuentaByCuenta(String cuentaId, String initFecha, String finFecha, int pagina) throws CuentaException {
         LocalDateTime initFechaHora = TransaccionUtil.getFechaInicial(initFecha);
-        LocalDateTime finFechaHora = TransaccionUtil.getFechaFin(initFecha);
+        LocalDateTime finFechaHora = TransaccionUtil.getFechaFin(finFecha);
 
         CuentaDto cuentaDto = cuentaService.obtenerCuentaByIdAndEstado(cuentaId, CUENTA_VALIDA);
 
@@ -79,7 +79,7 @@ public class TransaccionServiceImpl implements TransaccionService {
     @Override
     public EstadoCuentaClienteResponse obtenerEstadoCuentaByCliente(String clienteId, String initFecha, String finFecha, int pagina) throws UsuarioException {
         LocalDateTime initFechaHora = TransaccionUtil.getFechaInicial(initFecha);
-        LocalDateTime finFechaHora = TransaccionUtil.getFechaFin(initFecha);
+        LocalDateTime finFechaHora = TransaccionUtil.getFechaFin(finFecha);
 
         ClienteResponse clienteResponse = client.getClienteById(clienteId);
 
