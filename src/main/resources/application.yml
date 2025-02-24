@@ -1,0 +1,18 @@
+spring.application.name: registro-bancario
+
+server.port: 8081
+# H2 Database Configuration
+spring.h2.console.enabled: true
+spring.datasource.url: jdbc:h2:mem:testdb
+spring.datasource.driverClassName: org.h2.Driver
+spring.datasource.username: sa
+spring.datasource.password: password
+spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+# Auto-generate tables
+spring.jpa.hibernate.ddl-auto: create-drop
+spring.jpa.generate-ddl: true
+spring.jpa.defer-datasource-initialization: true
+spring.h2.console.path: /h2-console
+
+logging.level.org.hibernate: DEBUG
